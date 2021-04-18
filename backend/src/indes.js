@@ -1,9 +1,8 @@
 require('dotenv').config()
 const app = require('./app')
 
-const port = process.env.SERVER_PORT ? process.env.SERVER_PORT : 3333 
 const mongoose = require('mongoose');
-const password = "wHh5Tg6Yesf3kTCR"
+const password = "wHh5Tg6Yesf3kTCR" 
 
 const uri = `mongodb+srv://dbApp:${password}@cluster0.v8url.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
@@ -15,5 +14,5 @@ db.once('open', function () {
     console.log("connected to mongodb!!!")
 })
 
-console.log(`Server starting in : http://localhost:${port}/`)
-app.listen(port)
+console.log(`Server starting in : ${process.env.SERVER_LINK}/`)
+app.listen(process.env.SERVER_PORT)

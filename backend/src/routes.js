@@ -26,6 +26,8 @@ routes.post(`${baseapi}/tracker/`, TrackerController.add )
 
 routes.post(`${baseapi}/store/`, StoreController.add )
 
-routes.get(`${baseapi}/auth/`, AuthController.login)
+routes.get(`${baseapi}/auth`, AuthController.emailConfirmation)
+routes.post(`${baseapi}/auth/`, AuthController.login)
+
 
 module.exports = routes

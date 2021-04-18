@@ -154,8 +154,6 @@ No status `delivered` ou `archive` o sistema para de atualizar o status do pacot
 
 `delete` - Deleta a conta - envia um email de confirmação
 
-
-
 ##### `/auth/`
 
 `GET` - 
@@ -165,5 +163,25 @@ No status `delivered` ou `archive` o sistema para de atualizar o status do pacot
 `UPDATE` -
 
 `DELETE` -
+
+
+
+
+
+To Do 
+
+- [ ] Alteração nas informações do usuario
+
+- [ ] Deletar conta
+
+- [ ] recuperação de email e conta
+
+- [ ] Sertificado SSL
+
+- [ ] Docker - Mongodb e nodejs
+
+- [ ] 
+
+- [ ]  
 
 
