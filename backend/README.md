@@ -1,4 +1,4 @@
-<img src="file:///home/hb/Documents/MyPackage/backend/assets/f7f00eefdb55ba115e91e601ff6806c0a36b6c44.png" title="" alt="" data-align="center">
+<img src="https://raw.githubusercontent.com/HBeserra/markdown-images/main/2021/04/19-10-11-26-f7f00eefdb55ba115e91e601ff6806c0a36b6c44.png" title="" alt="" data-align="center">
 
 # API Gerenciador de encomendas
 
@@ -144,29 +144,39 @@ No status `delivered` ou `archive` o sistema para de atualizar o status do pacot
 
 ## API
 
-##### `/user/`
+##### Autenticação e Usuario
 
-`GET` - retorna as informações do usuario
+| Rota             | Metodo | Função                          | Scopes               | Descrição                                                                                       | request                   |
+| ---------------- | ------ | ------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------- | ------------------------- |
+| `/user/`         | `GET`  | `userReadAccountInfo`           | `user-read-data`     | retorna as informações da conta do usuario                                                      | `_id` Opcional            |
+| `/user/`         | `POST` | `userCreateAccount`             | -                    | Cria uma nova conta de usuario **limita a uma conta por email** - envia um email de confirmação | `name` `email` `password` |
+| `/user/`         | `PUT`  | `userModifyAccount`             | `user-change-data`   | Altera informações da conta                                                                     | `update`                  |
+| `/user/`         | `PUT`  | `userModifyAccountEmail`        | `user-change-data`   |                                                                                                 | `email`                   |
+| -                | -      | -                               | -                    |                                                                                                 |                           |
+| `/auth/`         | `POST` | `authLogin`                     | -                    |                                                                                                 | `email` `password`        |
+| `/auth/password` | `GET`  | `authResetPasswordConfirmation` | `password-reset`     |                                                                                                 | `password`                |
+| `/auth/password` | `POST` | `authResetPassword`             | -                    |                                                                                                 | `email`                   |
+| `/auth/email`    | `GET`  | `authEmailConfirmation`         | `email-confirmation` |                                                                                                 | -                         |
+| `/auth/email`    | `POST` | `authResendAccountConfirmation` | -                    |                                                                                                 | `email`                   |
 
-`POST` - Cria uma nova conta de usuario **limita a uma conta por email** - envia um email de confirmação
+### Lojas
 
-`Update` - Altera informações da conta
+| Rota     | Metodo   | Função          | Scopes                                    | Descrição | request          |
+| -------- | -------- | --------------- | ----------------------------------------- | --------- | ---------------- |
+| `/store` | `POST`   | `add`           | `store-change-data`                       |           | `name` `address` |
+| `/store` | `GET`    | `readStoreInfo` | `store-read-data`  ou `store-change-data` |           | `_id`            |
+| `/store` | `PUT`    | `editStoreInfo` | `store-change-data`                       |           | `update`         |
+| `/store` | `DELETE` | `deleteStore`   | `store-change-data`                       |           | -                |
 
-`delete` - Deleta a conta - envia um email de confirmação
+### Produtos
 
-##### `/auth/`
-
-`GET` - 
-
-`POST` -
-
-`UPDATE` -
-
-`DELETE` -
-
-
-
-
+| Rota             | Metodo   | Função          | Scopes                                    | Descrição | request  |
+| ---------------- | -------- | --------------- | ----------------------------------------- | --------- | -------- |
+| `/store/product` | `GET`    | `getProduct`    |                                           |           |          |
+| `/store/product` | `POST`   | `add`           | `store-change-data`                       |           | `name`   |
+| `/store/product` | `GET`    | `readStoreInfo` | `store-read-data`  ou `store-change-data` |           | `_id`    |
+| `/store/product` | `PUT`    | `editStoreInfo` | `store-change-data`                       |           | `update` |
+| `/store/product` | `DELETE` | `deleteStore`   | `store-change-data`                       |           | -        |
 
 To Do 
 
@@ -174,14 +184,8 @@ To Do
 
 - [ ] Deletar conta
 
-- [ ] recuperação de email e conta
+- [x] recuperação de email e conta
 
 - [ ] Sertificado SSL
 
 - [ ] Docker - Mongodb e nodejs
-
-- [ ] 
-
-- [ ]  
-
-

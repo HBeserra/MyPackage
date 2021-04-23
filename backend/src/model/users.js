@@ -15,10 +15,13 @@ const userSchema = new mongoose.Schema({
     },
     timestamp: Number,
     password: {
-        hash: String,
+        hash: {
+            type: String,
+            required: true
+        },
         salt: {
             type: String,
-            require: function() { return this.token; }
+            required: true
         }
     },
     stores: [mongoose.Schema.Types.ObjectId]
