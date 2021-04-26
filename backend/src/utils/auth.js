@@ -38,7 +38,6 @@ function verifyTokenScope(scopes) {
 
         req.token.payload = verifyToken(req.token.encoded)
         
-        console.log(scopes,req.token)
         if(!req?.token?.payload?.scopes) return res.sendStatus(401)
 
         var boolArray = new Array(scopes.length)
@@ -47,7 +46,10 @@ function verifyTokenScope(scopes) {
             boolArray[index] = req?.token?.payload?.scopes.includes(element)
         });
 
-        if (boolArray.includes(false)) return res.sendStatus(400)
+        if (boolArray.includes(false)) {
+            console.error("\n \x1b[31m ================== User Without acess ==================\x1b[0m \n\n",req.path,"\x1b[31m\nrequired scopes:\x1b[0m",scopes,"\x1b[31m \ntoken:\x1b[0m",req.token)
+            return res.sendStatus(400)
+        }
 
         next()
     }

@@ -2,6 +2,65 @@
 
 # API Gerenciador de encomendas
 
+## Usuario/Vendedor
+
+```
+db: user
+    - _id: ObjectID required
+    - timestamp: Integer, required
+    - name: String, required
+    - email: { 
+        address: String, required
+        confirmed: Bool, default false
+      }
+    - password: {
+        hash: String, required                # Hash da senha do usuario
+        salt: String, required                 # String utilizada para criar o hash da senha
+      }
+    - stores: [ObjectID]
+    - packages: [ObjectID]
+```
+
+###### Criando o hash
+
+A hash é gerada utilizando `hash = func_hash(salt + plaintext-password)`, o `salt` é uma string aleatoria gerada para evitar ataques de dicionario.
+
+| Rota             | Metodo | Função                          | Scopes                                 | Descrição                                                                                       | request                   |
+| ---------------- | ------ | ------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------- |
+| `/user/`         | `GET`  | `userReadAccountInfo`           | `user-read-data` ou `user-change-data` | retorna as informações da conta do usuario                                                      | `_id` Opcional            |
+| `/user/`         | `POST` | `userCreateAccount`             | -                                      | Cria uma nova conta de usuario **limita a uma conta por email** - envia um email de confirmação | `name` `email` `password` |
+| `/user/`         | `PUT`  | `userModifyAccount`             | `user-change-data`                     | Altera informações da conta                                                                     | `update`                  |
+| `/user/`         | `PUT`  | `userModifyAccountEmail`        | `user-change-data`                     |                                                                                                 | `email`                   |
+| -                | -      | -                               | -                                      |                                                                                                 |                           |
+| `/auth/`         | `POST` | `authLogin`                     | -                                      |                                                                                                 | `email` `password`        |
+| `/auth/password` | `GET`  | `authResetPasswordConfirmation` | `password-reset`                       |                                                                                                 | `password`                |
+| `/auth/password` | `POST` | `authResetPassword`             | -                                      |                                                                                                 | `email`                   |
+| `/auth/email`    | `GET`  | `authEmailConfirmation`         | `email-confirmation`                   |                                                                                                 | -                         |
+| `/auth/email`    | `POST` | `authResendAccountConfirmation` | -                                      |                                                                                                 | `email`                   |
+
+## Lojas
+
+Um usuario pode ter uma ou mas lojas em sua conta, cada loja deve ter um `administrador` que podera adicionar ou remover outros usuarios, esses usuarios teram acesso como um vendedor podendo adicionar ou remover produtos fazer vendas e controlar os pacotes enviados, porem não podem editar as informações da loja ou remover um produto, venda ou encomenda do historico da loja.
+
+```
+db: store
+    - _id: ObjectID required
+    - timestamp: Integer, required
+    - name: String, required                    # Nome da loja
+    - admin: ObjectID, required              # ID do dono da loja
+    - users: [ObjectID]                      # ID's dos vendedores
+    - location: {
+        zip: Integer,required                   # Cep da loja para calculo de frete
+      } 
+    - images: {
+        logo: Binary
+      }
+```
+
+## Vendas
+
+Uma venda tras o conjunto de produtos, informações do cliente, informaçõe da venda, e o/os pacotes a serem enviados, as vendas são atribuidas a loja e ao vendedor.
+
 ## Mongodb
 
 ```
@@ -170,9 +229,9 @@ No status `delivered` ou `archive` o sistema para de atualizar o status do pacot
 
 ### Produtos
 
-| Rota             | Metodo   | Função          | Scopes                                    | Descrição | request  |
+| Rota             | Método   | Função          | Scopes                                    | Descrição | request  |
 | ---------------- | -------- | --------------- | ----------------------------------------- | --------- | -------- |
-| `/store/product` | `GET`    | `getProduct`    |                                           |           |          |
+| `/store/product` | `GET`    | `getProduct`    | `store-read-data` ou `store-change-data`  |           |          |
 | `/store/product` | `POST`   | `add`           | `store-change-data`                       |           | `name`   |
 | `/store/product` | `GET`    | `readStoreInfo` | `store-read-data`  ou `store-change-data` |           | `_id`    |
 | `/store/product` | `PUT`    | `editStoreInfo` | `store-change-data`                       |           | `update` |

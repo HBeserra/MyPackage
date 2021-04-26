@@ -1,13 +1,13 @@
 const express = require('express')
 //const { celebrate, Segments, Joi } = require('celebrate')
 //const assert = require('assert');
-
+const {verifyTokenScope} = require("./utils/auth")
 
 const routes = express.Router()
 
-const {verifyTokenScope} = require("./utils/auth")
 
 const AuthUsersController = require('./controllers/authUsers')
+const StoreController = require('./controllers/store')
 
 const baseapi = "/api/v1"
 
@@ -22,5 +22,16 @@ routes.get(`${baseapi}/auth/password`,  verifyTokenScope(["password-reset"]),Aut
 routes.post(`${baseapi}/auth/password`, AuthUsersController.authResetPassword)
 routes.get(`${baseapi}/auth/email`, verifyTokenScope(["email-confirmation"]),AuthUsersController.authEmailConfirmation)
 routes.post(`${baseapi}/auth/email`, AuthUsersController.authResendAccountConfirmation)
+
+//Loja
+routes.get(`${baseapi}/store/list`,verifyTokenScope(["user-read-data"]), StoreController.listStores)      // Lista as lojas que o usuario tem acesso
+
+routes.get(`${baseapi}/store/`,verifyTokenScope(["user-read-data"]), StoreController.infoStore)              // retorna as informações da loja
+routes.post(`${baseapi}/store/`,verifyTokenScope(["user-change-data"]), StoreController.addStore)             // cria uma loja 
+routes.put(`${baseapi}/store/`,verifyTokenScope(["user-change-data"]), StoreController.updateStore)              // altera informações basicas da loja
+routes.delete(`${baseapi}/store/`,verifyTokenScope(["user-change-data"]), )           // remove a loja
+//Vendedores
+routes.post(`${baseapi}/store/vendor`,verifyTokenScope(["user-change-data"]), StoreController.addVendor)           // adiciona um ou mais vendedores
+routes.delete(`${baseapi}/store/vendor`,verifyTokenScope(["user-change-data"]), StoreController.removeVendor)         // remove um ou mais vendedores  
 
 module.exports = routes

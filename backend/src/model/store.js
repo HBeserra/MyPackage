@@ -5,18 +5,21 @@ const Schema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    name: String,
-    admin_id: {
+    name: {
+        type: String,
+        required: true
+    },
+    admin: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    users_id: [mongoose.Schema.Types.ObjectId],
+    users: [{ type: mongoose.Schema.Types.ObjectId}],
     location: {
         zip: {
             type: Number,
             required: true
         },
-    },    
+    }
 })
 
 module.exports = mongoose.model("store", Schema)
