@@ -1,5 +1,21 @@
 <img src="https://raw.githubusercontent.com/HBeserra/markdown-images/main/2021/04/19-10-11-26-f7f00eefdb55ba115e91e601ff6806c0a36b6c44.png" title="" alt="" data-align="center">
 
+# Configuração
+
+Criar uma conta no [cloud mongodb](https://account.mongodb.com/) configuração [passo a passo](https://docs.google.com/document/d/1nt7BVpqFmejD_4Hti6QfZe6YK20hR_Ud5G4RXgADjWM/edit?usp=sharing)
+
+## Arquivo .env
+
+```
+DB_URL=mongodb://root:example@localhost:27017/mypackagedev?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
+SERVER_BASE_URL=http://localhost
+SERVER_PORT=3333
+AUTH_SECRET=0
+SMTP_URL=smtp://localhost:1025/
+SMTP_LOGIN=
+STMP_PASSWORD=
+```
+
 # API Gerenciador de encomendas
 
 ## Usuario/Vendedor

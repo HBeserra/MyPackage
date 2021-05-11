@@ -2,18 +2,12 @@ const nodemailer = require("nodemailer");
 
 serviceName = "MyPackage"
 
-const transporter = nodemailer.createTransport({
-    service: "SendinBlue",
-    auth: {
-        user: process.env.SMTP_LOGIN,//process.env.STMP_USER, // generated ethereal user
-        pass: process.env.STMP_PASSWORD//process.env.STMP_PASSWORD, // generated ethereal password
-      },
-});
+const transporter = nodemailer.createTransport(process.env.SMTP_URL);
 
 const defaultEmail = '"MyPackage 📦" <no-replay@mypackage.testlabr.com>'
 
 function EmailConfirmation(email,token){
-    const link = `${process.env.SERVER_LINK}/api/v1/auth/email/?token=${token}`
+    const link = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}/api/v1/auth/email/?token=${token}`
     const mail = {
         from: defaultEmail,
         to: email,
@@ -25,7 +19,7 @@ function EmailConfirmation(email,token){
 }
 
 function PasswordReset(email,token) {
-    const link = `${process.env.SERVER_LINK}/api/v1/auth/password/?token=${token}`
+    const link = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}/api/v1/auth/password/?token=${token}`
     const mail = {
         from: defaultEmail,
         to: email,
