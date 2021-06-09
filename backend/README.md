@@ -190,7 +190,7 @@ package
   - timestamp: Integer, required
   - store-id: String, required
   - order-id: String
-  - status: String, required, [created, posted, in-transit, delivered, archived]
+  - status: String, required, [created, posted, in_transit, being_delivered, delivered, archived]
   - shipping-company: String, required, [correios]
   - addressee:{
       zip: String, required
