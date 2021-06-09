@@ -1,0 +1,35 @@
+$GridColumnsNum: 1;
+$GridCardMinWidth: 400px;
+$GridGap: 2rem;
+
+.grid{
+    width: inherit;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 500px));
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: scroll;
+    justify-content: center;
+}
+
+.details{
+    display: flex;
+    height: auto;
+    width: 100%;
+    min-height: 600px;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: red;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    flex-direction: row;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+    overflow: hidden;
+}   

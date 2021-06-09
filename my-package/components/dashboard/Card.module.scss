@@ -1,0 +1,153 @@
+.card {
+    display: flex;
+    width: auto;
+    min-width: 300px;
+    max-width: 500px;
+    height: auto;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    flex-direction: column;
+    .status {
+        border-radius: 8px 8px 0 0;
+        background-color: gray;
+        height: 0.3rem;
+        width: 100%;
+    }
+}
+
+.tab_line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: .5rem;
+}
+.tab {
+    height: 0.3rem;
+    width: 100%;
+    background-color: #A8A8B3;
+}
+.active_tab {
+    background-color: red;
+    width: 100%;
+    height: 0.3rem;
+}
+.past_tab {
+    background-color: black;
+}
+
+.first_child_tab {
+    border-radius: 8px 0 0 0;
+    order: -1;
+}
+.last_child_tab {
+    border-radius: 0 8px 0 0;
+    order: 100;
+}
+.tab_title {
+    font-family: 'Roboto', sans-serif;
+    font-style:normal;
+    font-weight: 500;
+    font-size: .7rem;
+    line-height: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    align-items: center;
+}
+.tab_icon{
+    width: 25px;
+    height: 25px;
+    margin: 0 20px;
+}
+
+.bar_line{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 3px;
+}
+.bar_text{
+    font-family: 'Roboto', sans-serif;
+    font-style:normal;
+    font-weight: 500;
+    font-size: .7rem;
+    line-height: 0px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.bar_icon{
+    width: 25px;
+    height: 25px;
+    margin: 0 20px; 
+    align-items: center;
+}
+.bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0px;
+    border-top: 1px #A8A8B3 solid;
+    padding: .6rem 0;
+    margin-top: .3rem;
+
+}
+.bar:focus-within{
+    border-color: rgba(255, 0, 0, 0.329);
+    border-width: .2rem;
+    border-radius: 1rem;
+    
+}
+.title_text{
+    display: flex;
+    gap: 1rem;
+    flex-direction:column;
+}
+.text{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 0;
+}
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-style:normal;
+    font-weight: 700;
+    font-size: .7rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.row{
+    display: flex;
+    gap: 3rem;
+    justify-content:flex-start;
+    overflow-wrap: break-word;
+    margin: .9rem 1.5rem;
+}
+.colunm{
+    width: 100%;
+    min-width: 20%;
+}
+
+
+.order_0{
+    order: 0;
+}
+.order_1{
+    order: 1;
+}
+.order_2{
+    order: 2;
+}
+.order_3{
+    order: 3;
+}
+.order_4{
+    order: 4;
+}
+.order_5{
+    order: 5;
+}
