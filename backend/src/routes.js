@@ -8,6 +8,7 @@ const routes = express.Router()
 
 const AuthUsersController = require('./controllers/authUsers')
 const StoreController = require('./controllers/store')
+const OrderController = require('./controllers/order')
 
 const baseapi = "/api/v1"
 
@@ -33,5 +34,13 @@ routes.delete(`${baseapi}/store/`,verifyTokenScope(["user-change-data"]), )     
 //Vendedores
 routes.post(`${baseapi}/store/vendor`,verifyTokenScope(["user-change-data"]), StoreController.addVendor)           // adiciona um ou mais vendedores
 routes.delete(`${baseapi}/store/vendor`,verifyTokenScope(["user-change-data"]), StoreController.removeVendor)         // remove um ou mais vendedores  
+
+//Vendas
+routes.get(`${baseapi}/order/`, OrderController.listOrDetail)
+routes.post(`${baseapi}/order/`, OrderController.create)
+routes.post(`${baseapi}/order/package`, OrderController.createPackage)
+
+
+
 
 module.exports = routes
