@@ -1,16 +1,19 @@
+@import '../../styles/theme.scss';
+
 .card {
     display: flex;
     width: auto;
     min-width: 300px;
     max-width: 500px;
-    height: auto;
+    height: max-content;
     padding: 0;
-    background-color: #fff;
+    background-color: $light;
     border-radius: 0.3rem;
     flex-direction: column;
+    
     .status {
         border-radius: 8px 8px 0 0;
-        background-color: gray;
+        background-color: $secondary;
         height: 0.3rem;
         width: 100%;
     }
@@ -22,31 +25,29 @@
     align-items: center;
     gap: 0.5rem;
     margin-bottom: .5rem;
+    :first-child{
+        border-radius: 8px 0 0 0;
+    }
+    :last-child{
+        border-radius: 0 8px 0 0;
+    }
 }
 .tab {
     height: 0.3rem;
     width: 100%;
-    background-color: #A8A8B3;
+    background-color: lighten($secondary, .8);
 }
 .active_tab {
-    background-color: red;
+    background-color: $primary;
     width: 100%;
     height: 0.3rem;
 }
 .past_tab {
-    background-color: black;
+    background-color: $dark;
 }
 
-.first_child_tab {
-    border-radius: 8px 0 0 0;
-    order: -1;
-}
-.last_child_tab {
-    border-radius: 0 8px 0 0;
-    order: 100;
-}
 .tab_title {
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-stack;
     font-style:normal;
     font-weight: 500;
     font-size: .7rem;
@@ -83,42 +84,31 @@
     align-items: center;
 }
 .bar{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0px;
-    border-top: 1px #A8A8B3 solid;
+    border-top: 1px $secondary solid;
     padding: .6rem 0;
     margin-top: .3rem;
-
-}
-.bar:focus-within{
-    border-color: rgba(255, 0, 0, 0.329);
-    border-width: .2rem;
-    border-radius: 1rem;
     
 }
-.title_text{
-    display: flex;
-    gap: 1rem;
-    flex-direction:column;
+
+.bar:hover{
+    background-color: darken($light, 2);
+    color: $primary;
 }
-.text{
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1rem;
-    margin: 0;
-}
-.title{
-    font-family: 'Roboto', sans-serif;
-    font-style:normal;
-    font-weight: 700;
-    font-size: .7rem;
-    text-transform: uppercase;
-    margin: 0;
-}
+
+
 
 .row{
     display: flex;
@@ -130,24 +120,4 @@
 .colunm{
     width: 100%;
     min-width: 20%;
-}
-
-
-.order_0{
-    order: 0;
-}
-.order_1{
-    order: 1;
-}
-.order_2{
-    order: 2;
-}
-.order_3{
-    order: 3;
-}
-.order_4{
-    order: 4;
-}
-.order_5{
-    order: 5;
 }

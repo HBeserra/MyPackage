@@ -1,0 +1,42 @@
+.list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    &::before{
+        position: relative;
+        top: 0;
+        height: 100%;
+        padding-right: 11px;
+        border-right: 2px solid #ec0d0d;
+        content: "";
+    
+    }
+}
+.listItem{
+    text-overflow: clip;
+    display: flex;
+    margin: 0 0 1rem 0;
+}
+.dot{
+    width: 10px;
+    height: 10px;
+    border: gray solid 2px;
+    background-color: #fff;
+    border-radius: 100%;
+    position: relative;
+    left: calc(-1rem + -5px);
+}
+.container{
+    display: flex;
+}
+.line{
+    width: 0px;
+    margin-right: 1rem;
+    height: 100%;
+    border-left: solid 1px gray;
+    margin-top: 0rem;
+    margin-bottom: 3rem;
+}
