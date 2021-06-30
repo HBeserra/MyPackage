@@ -2,7 +2,7 @@ version: '3.1'
 services:
   mongo:
     image: mongo
-    restart: always
+    restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -10,7 +10,7 @@ services:
       - '27017:27017'
   mongo-express:
     image: mongo-express
-    restart: always
+    restart: unless-stopped
     ports:
       - '8081:8081'
     environment:
@@ -18,7 +18,7 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
   mailhog:
     image: 'mailhog/mailhog:latest'
-    restart: always
+    restart: unless-stopped
     ports:
       - '1025:1025'
       - '8025:8025'

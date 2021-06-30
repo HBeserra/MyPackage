@@ -1,15 +1,17 @@
 const Data = [
     {
-        ID: "0000",
+        id: "0",
         status: "created",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000001BR",
         shippingType: "sedex 10",
         trackingData: []
     },
     {
-        ID: "0000",
+        id: "1",
         status: "posted",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000002BR",
         shippingType: "sedex",
@@ -23,8 +25,9 @@ const Data = [
         ],
     },
     {
-        ID: "0000",
+        id: "2",
         status: "in_transit",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000003BR",
         shippingType: "sedex",
@@ -52,8 +55,9 @@ const Data = [
         ],
     },
     {
-        ID: "0000",
+        id: "3",
         status: "being_delivered",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000004BR",
         shippingType: "pac",
@@ -94,8 +98,9 @@ const Data = [
         ],
     },
     {
-        ID: "0000",
+        id: "4",
         status: "delivered",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000005BR",
         shippingType: "pac",
@@ -142,8 +147,9 @@ const Data = [
         ],
     },
     {
-        ID: "0000",
+        id: "5",
         status: "archived",
+        location: ['-46','-12'],
         shippingCompany: "correios",
         trackingCode: "AA000000006BR",
         shippingType: "pac",

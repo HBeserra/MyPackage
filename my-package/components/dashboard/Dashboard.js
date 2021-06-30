@@ -12,7 +12,7 @@ export default function Dashboard({ ...params }) {
     //setCards(CardsData)
 
     const ListCards = cards.map((CardData,i) => {
-        return(<Card packageData={CardData} onArchive={()=>setCards(cards.filter( card => card != CardData))} onDetails={()=>setCount(CardData)} key={CardData} />)
+        return(<Card packageData={CardData} onArchive={()=>setCards(cards.filter( card => card != CardData))} onDetails={()=>setCount(CardData)} key={CardData.id} />)
     })
 
     return (

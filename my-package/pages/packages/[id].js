@@ -1,9 +1,13 @@
 import { useRouter } from 'next/router'
-const { rastrearEncomendas } = require('correios-brasil');
 
-let codRastreio = ['PW639018542BR', 'PW935793588BR']; // array de códigos de rastreios
 
-rastrearEncomendas(codRastreio)
+
+//import TitleText from '../TitleText'
+//import Timeline from './Timeline'
+
+
+
+
 const Post = () => {
 
   const router = useRouter()

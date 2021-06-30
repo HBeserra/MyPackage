@@ -18,7 +18,7 @@ const tabs_status = {
 
 const Tabs = function (params) {
 
-
+    
 
     function status(num) {
         const colors = [style.tab,  style.active_tab, style.past_tab ]
@@ -92,7 +92,7 @@ export default function Card({ ...params }) {
     var divStyle = {
         order: tabs_status[params.packageData.status][0]
     };
-
+    
     return (
         <div style={divStyle} className={[style.card, style[`order_${tabs_status[params.packageData.status][0]}`]].join(" ")} >
             <Tabs status={params.packageData.status} onArchive={params.onArchive}/>

@@ -1,11 +1,11 @@
 import style from './MenuBar.module.scss'
-import theme from '../theme'
+import theme from '../../theme'
 import { BsArrowRightShort, BsArrowLeftShort } from 'react-icons/bs'
-import TitleText from '../TitleText'
-import Timeline from './Timeline'
-import Image from 'next/image'
+import TitleText from '../Timeline'
+import Timeline from '../Timeline'
 
-import { MapImage } from './map/MapImage'
+import { MapImage } from '../map/MapImage'
+
 
 const DefaultPackageParams = {
   code: null,
@@ -29,6 +29,10 @@ const statusMensage = {
 
 export default function MenuBar(params) {
 
+
+
+
+
   const packageData = params.package
   const type = (packageData?.trackingCode) ? "start" : "center";
   const title = (packageData?.trackingCode) ? packageData.trackingCode : "Selecione uma encomenda para ver os detalhes";
@@ -39,6 +43,10 @@ export default function MenuBar(params) {
 
   const scrollStyle = {justifyContent: type}
 
+
+  function handleClick(obj) {
+
+  }
   
   if(packageData == 0) return (
     <div className={[style.autoHide,style.container].join(" ")} style={containerStyle}>
@@ -63,7 +71,7 @@ export default function MenuBar(params) {
 
       </div>
       <div className={style.scroll}>
-        <MapImage location={packageData?.location} />
+        <MapImage/>
         <h3 className={style.title}>{title}</h3>
         <div className={style.text}>
           <TitleText title="Status" text={statusMensage[packageData?.status][1]} />

@@ -26,19 +26,12 @@
     height: 4rem;
     
     background-image: linear-gradient($background 50%, rgba( $background, 0));
-    margin-bottom: -6rem;
+    margin-bottom: -3rem;
     z-index: 2;
 }
 .headerButton{
     border: none;
-}
-
-
-.MapImage{
-    width: 100%;
-    max-width: 80vw;
-    min-width: 400px;
-    height: auto;
+    background: none;
 }
 
 .title{
