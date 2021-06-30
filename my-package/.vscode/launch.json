@@ -7,12 +7,11 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Firefox",
+      "name": "Launch Browser",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
       "disableNetworkCache": true,
       "timeout": 10000
-      
     },
     {
       "type": "node",
@@ -26,8 +25,8 @@
   ],
   "compounds": [
     {
-      "name": "Debug Next.js + Firefox",
-      "configurations": ["Attach Next.js", "Launch Firefox"]
+      "name": "Debug Next.js + Browser",
+      "configurations": ["Attach Next.js", "Launch Browser"]
     }
   ]
 
