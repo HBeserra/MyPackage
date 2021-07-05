@@ -1,4 +1,4 @@
-@import '../../styles/theme.scss';
+@import "../../styles/theme.scss";
 
 .card {
     display: flex;
@@ -7,13 +7,11 @@
     max-width: 500px;
     height: max-content;
     padding: 0;
-    background-color: $light;
     border-radius: 0.3rem;
     flex-direction: column;
-    
+
     .status {
         border-radius: 8px 8px 0 0;
-        background-color: $secondary;
         height: 0.3rem;
         width: 100%;
     }
@@ -24,100 +22,88 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: .5rem;
-    :first-child{
+    margin-bottom: 0.5rem;
+    :first-child {
         border-radius: 8px 0 0 0;
     }
-    :last-child{
+    :last-child {
         border-radius: 0 8px 0 0;
     }
 }
 .tab {
     height: 0.3rem;
     width: 100%;
-    background-color: lighten($secondary, .8);
-}
-.active_tab {
-    background-color: $primary;
-    width: 100%;
-    height: 0.3rem;
-}
-.past_tab {
-    background-color: $dark;
 }
 
 .tab_title {
     font-family: $font-stack;
-    font-style:normal;
+    font-style: normal;
     font-weight: 500;
-    font-size: .7rem;
+    font-size: 0.7rem;
     line-height: 10px;
     text-align: center;
     text-transform: uppercase;
     align-items: center;
 }
-.tab_icon{
+.tab_icon {
     width: 25px;
     height: 25px;
     margin: 0 20px;
 }
 
-.bar_line{
+.bar_line {
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
     margin-bottom: 3px;
 }
-.bar_text{
-    font-family: 'Roboto', sans-serif;
-    font-style:normal;
+.bar_text {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
     font-weight: 500;
-    font-size: .7rem;
+    font-size: 0.7rem;
     line-height: 0px;
     text-align: center;
     text-transform: uppercase;
 }
-.bar_icon{
+.bar_icon {
     width: 25px;
     height: 25px;
-    margin: 0 20px; 
+    margin: 0 20px;
     align-items: center;
 }
-.bar{
+.bar {
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-    
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0px;
     border-top: 1px $secondary solid;
-    padding: .6rem 0;
-    margin-top: .3rem;
-    
+    padding: 0.6rem 0;
+    margin-top: 0.3rem;
 }
 
-.bar:hover{
-    background-color: darken($light, 2);
+.bar:hover {
+    background-color: lighten($secondary, 25);
     color: $primary;
 }
 
-
-
-.row{
+.row {
     display: flex;
     gap: 3rem;
-    justify-content:flex-start;
+    justify-content: flex-start;
     overflow-wrap: break-word;
-    margin: .9rem 1.5rem;
+    margin: 0.5rem 1.5rem;
 }
-.colunm{
+.column {
     width: 100%;
     min-width: 20%;
 }

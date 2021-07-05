@@ -1,26 +1,30 @@
+import variables from '../styles/theme.module.scss';
+
 const colors = {
-    theme_color: "#E02041",
-    title: "#13131A",
-    subtitle: "#41414D",
-    text: "#737380",
-    subtext: "#A8A8B3",
-    input: "#FFFFFF",
-    input_line: "#DCDCE6",
-    background: "#F0F0F5",
-
-    alert: "",
-    info: "",
-
-    
-    "primary": "#E02041",
-    "secondary": "#737380",
-    "success": "#1F7A50",
-    "info": "#44ACF9",
-    "warning": "#F9A944",
-    "danger": "#E02041",
-    "light": "#A8A8B3",
-    "dark": "#13131A",
-    "background": "#ffffff"
+  true: {
+    primary: variables.primary,
+    secondary: "#ffffff44",
+    success: variables.success,
+    info: variables.info,
+    warning: variables.warning,
+    danger: variables.danger,
+    light: "#5c6773ff",
+    dark: "#458ce9",
+    text: "#ffffffbb",
+    background: "#212733",
+  },
+  false: {
+    primary: variables.primary,
+    secondary: variables.secondary,
+    success: variables.success,
+    info: variables.info,
+    warning: variables.warning,
+    danger: variables.danger,
+    light: variables.light,
+    dark: "#0d3263",
+    background: variables.background,
+    text: variables.dark,
+  }
 }
 
 export default colors;

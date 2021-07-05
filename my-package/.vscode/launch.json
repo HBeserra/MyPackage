@@ -26,8 +26,10 @@
   "compounds": [
     {
       "name": "Debug Next.js + Browser",
-      "configurations": ["Attach Next.js", "Launch Browser"]
+      "configurations": [
+        "Attach Next.js",
+        "Launch Browser"
+      ]
     }
   ]
-
 }

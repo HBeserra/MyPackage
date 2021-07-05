@@ -1,12 +1,20 @@
 import style from './TitleText.module.scss'
-const TitleText = function (props) {
-    if(!props.text) return null
+import { useGlobalContext } from '@/context/global'
+
+export default function TitleText(props) {
+
+    if (!props.text) return null
+
+    const globalContext = useGlobalContext()
+
+    const theme = {
+        color: globalContext.themes[globalContext.theme].text
+    }
+
     return (
-        <div className={`${style.TitleText} ${style.colunm}`}>
+        <div style={theme} className={`${style.TitleText} ${style.column}`}>
             <p className={style.title}>{props.title}:</p>
             <p className={style.text}>{props.text}</p>
         </div>
     )
 }
-
-export default TitleText

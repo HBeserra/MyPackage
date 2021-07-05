@@ -4,5 +4,13 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.enabled": true,
+		"cSpell.words": [
+			"CAJAMAR",
+			"ITAGUAI",
+			"PREL",
+			"Sedex"
+		]
+	}
 }

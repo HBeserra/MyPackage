@@ -1,20 +1,24 @@
 const Data = [
     {
         id: "0",
+        title: "produto 0",
+        description: "Exemplo de descrição do produto 0",
         status: "created",
-        location: ['-46','-12'],
+        location: [-46, -12],
         shippingCompany: "correios",
         trackingCode: "AA000000001BR",
-        shippingType: "sedex 10",
+        shippingType: "Sedex 10",
         trackingData: []
     },
     {
         id: "1",
+        title: "produto 1",
+        description: "Exemplo de descrição do produto 1",
         status: "posted",
-        location: ['-46','-12'],
+        location: [-46, -12],
         shippingCompany: "correios",
         trackingCode: "AA000000002BR",
-        shippingType: "sedex",
+        shippingType: "Sedex",
         trackingData: [
             {
                 status: 'Objeto postado',
@@ -26,11 +30,13 @@ const Data = [
     },
     {
         id: "2",
+        title: "produto 2",
+        description: "Exemplo de descrição do produto 2",
         status: "in_transit",
-        location: ['-46','-12'],
+        location: [-46, -12],
         shippingCompany: "correios",
         trackingCode: "AA000000003BR",
-        shippingType: "sedex",
+        shippingType: "Sedex",
         trackingData: [
             {
                 status: 'Objeto postado',
@@ -56,11 +62,13 @@ const Data = [
     },
     {
         id: "3",
+        title: "produto 3",
+        description: "Exemplo de descrição do produto 3",
         status: "being_delivered",
-        location: ['-46','-12'],
+        location: [-46, -12],
         shippingCompany: "correios",
         trackingCode: "AA000000004BR",
-        shippingType: "pac",
+        shippingType: "Pac",
         trackingData: [
             {
                 status: 'Objeto postado',
@@ -99,11 +107,13 @@ const Data = [
     },
     {
         id: "4",
+        title: "produto 4",
+        description: "Exemplo de descrição do produto 4",
         status: "delivered",
-        location: ['-46','-12'],
+        location: [-46, -12],
         shippingCompany: "correios",
         trackingCode: "AA000000005BR",
-        shippingType: "pac",
+        shippingType: "Pac",
         trackingData: [
             {
                 status: 'Objeto postado',
@@ -148,11 +158,13 @@ const Data = [
     },
     {
         id: "5",
+        title: "produto 5",
+        description: "Exemplo de descrição do produto 5",
         status: "archived",
-        location: ['-46','-12'],
+        location: [-46.656508656673964, -23.561415010541364],
         shippingCompany: "correios",
         trackingCode: "AA000000006BR",
-        shippingType: "pac",
+        shippingType: "Pac",
         trackingData: [
             {
                 status: 'Objeto postado',

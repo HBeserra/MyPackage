@@ -12,8 +12,8 @@ const Post = () => {
 
   const router = useRouter()
   const { id } = router.query
-  
-  return <p>Codigo do pacote: {id}</p>
+
+  return <p>Código do pacote: {id}</p>
 }
 
 export default Post
