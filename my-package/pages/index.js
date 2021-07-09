@@ -1,12 +1,11 @@
-//import React, { useState, useRef } from 'react';
-
 import Layout from '@/components/dashboard/Dashboard'
-import { InputSwitch } from 'primereact/inputswitch';
-import { useGlobalContext } from '@/context/global';
+
+// import { useGlobalContext } from '@/context/global';
+
 
 export default function Home() {
 
-  const globalContext = useGlobalContext() // importa o contexto global do app
+  // const globalContext = useGlobalContext() // importa o contexto global do app
 
   const layoutStyle = {
     display: "flex",
@@ -15,10 +14,12 @@ export default function Home() {
     alignItems: "center"
   }
 
+  // globalContext.setTheme("true", globalContext)
+
   return (
     <>
+
       <div style={layoutStyle}>
-        <InputSwitch checked={globalContext.theme} onChange={(e) => globalContext.setTheme(e.value, globalContext)} />
         <Layout />
       </div>
     </>

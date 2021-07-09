@@ -12,6 +12,7 @@ const colors = {
     dark: "#458ce9",
     text: "#ffffffbb",
     background: "#212733",
+    mapbox: "hbeserra/ckqrwkhvy59n918mfcbu4jxlz",
   },
   false: {
     primary: variables.primary,
@@ -24,6 +25,7 @@ const colors = {
     dark: "#0d3263",
     background: variables.background,
     text: variables.dark,
+    mapbox: "hbeserra/ckpprd2qu089z17qm3npvqn1l",
   }
 }
 

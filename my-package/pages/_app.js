@@ -1,18 +1,25 @@
 import Head from 'next/head';
 import 'normalize.css/normalize.css'
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
+
+
+
 import '@/styles/styles.global.scss'
-import { useState } from 'react';
-import { GlobalContextProvider } from '@/context/global';
+import { useEffect, useState } from 'react';
+import { GlobalContextProvider, pageContext } from '@/context/global';
 
 
 
 function MyApp({ Component, pageProps }) {
 
     const [globalState, setGlobalState] = useState({})
+
+    useEffect(function () {
+        const context = pageContext({ globalState, setGlobalState })
+
+        const theme = window.localStorage.getItem("theme") || false
+
+        context.setTheme(theme, context)
+    }, []);
 
     return (
         <>

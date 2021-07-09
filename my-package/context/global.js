@@ -7,7 +7,8 @@ const ThemeContext = createContext()
 
 export function pageContext(props) {
 
-  const { globalState, setGlobalState } = props
+  const { globalState = null, setGlobalState = null } = props || false
+
 
   const value = {
     setTheme: (varTheme, globalState) => {
@@ -15,6 +16,7 @@ export function pageContext(props) {
       i.theme = varTheme
 
       props.setGlobalState(i)
+      window.localStorage.setItem("theme", varTheme)
     },
     theme: props?.globalState?.theme || false,
     themes: colors,
@@ -33,13 +35,9 @@ export function GlobalContextProvider(props) {
 
   const value = pageContext(props.value)
 
+
   return (
     <ThemeContext.Provider value={value}>
-      <style jsx>{`
-        body {
-          background-color: ${value?.themes[value.theme]?.background};
-        }
-      `}</style>
       <div style={{ background: value?.themes[value.theme]?.background, color: value?.themes[value.theme]?.text, height: "100vh", minHeight: "100vh" }}>
         {children}
       </div>
