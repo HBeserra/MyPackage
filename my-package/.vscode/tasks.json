@@ -11,6 +11,13 @@
 			"problemMatcher": [],
 			"label": "npm: dev",
 			"detail": "NODE_OPTIONS='--inspect' next dev"
+		},
+		{
+			"type": "npm",
+			"script": "start-with-debug",
+			"group": "test",
+			"label": "Run server with debug",
+			"detail": "NODE_OPTIONS='--inspect' next start"
 		}
 	]
 }

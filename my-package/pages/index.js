@@ -1,5 +1,5 @@
 import Layout from '@/components/dashboard/Dashboard'
-
+import MenuAppBar from '@/components/dashboard/MenuAppBar'
 // import { useGlobalContext } from '@/context/global';
 
 
@@ -18,10 +18,14 @@ export default function Home() {
 
   return (
     <>
-
       <div style={layoutStyle}>
+        <MenuAppBar />
         <Layout />
       </div>
     </>
   )
 }
+
+
+
+
