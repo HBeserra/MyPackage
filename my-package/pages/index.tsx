@@ -47,8 +47,6 @@ const Home: NextPage = () => {
             '& > :not(style)': {},
             height: 50
           }}
-          noValidate
-          autoComplete="off"
         >
           <Paper
             elevation={6}
