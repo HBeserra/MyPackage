@@ -39,7 +39,7 @@ function Blog({ rastreio }: any) {
                         text: "Rastreie sua encomenda agora com MY Package",
                         url: (typeof window !== "undefined")? window?.location?.href : ''
                     }}
-                    onClick={(e:any) => ReactGA.event('view_item', {codRastreio: rastreio?.objetos[0]?.codObjeto, e})}
+                    onClick={(e:any) => ReactGA.event('share', {codRastreio: rastreio?.objetos[0]?.codObjeto, e})}
                 >
                     <Button variant="contained" disabled={(typeof window === "undefined") || !window?.location?.href} startIcon={<ShareIcon />} >
                         Enviar
