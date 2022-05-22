@@ -43,7 +43,7 @@ function Blog({ rastreio }: any) {
                 <Button variant="outlined" disabled endIcon={<SaveIcon />}>
                     Salvar
                 </Button>
-                <Button variant="contained" disabled={!enableShare} startIcon={<ShareIcon />} onClick={share}>
+                <Button variant="contained"  startIcon={<ShareIcon />} onClick={share}>
                     Send
                 </Button>
             </Box>
