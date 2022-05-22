@@ -4,6 +4,12 @@ import Head from 'next/head'
 import { ThemeProvider } from '@mui/system'
 import { Box, createTheme, CssBaseline } from '@mui/material';
 import theme from '@/components/theme';
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-X270YGFGX9");
+
+
+if(typeof window !== "undefined") ReactGA.send({ hitType: "pageview", page: window?.location?.pathname });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return <>

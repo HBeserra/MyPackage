@@ -4,6 +4,7 @@ import type { NextPage } from 'next'
 import LoginButton from '@/components/buttons/login'
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import ReactGA from "react-ga4";
 
 const styles = {
   paperContainer: {
@@ -14,6 +15,7 @@ const styles = {
   }
 };
 
+ReactGA.initialize("G-X270YGFGX9");
 const CORREIOS = /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/
 
 const Home: NextPage = () => {
@@ -23,7 +25,10 @@ const Home: NextPage = () => {
   console.log(codRastreio, CORREIOS.test(codRastreio))
 
   function redirect () {
-    if (CORREIOS.test(codRastreio)) router.push(`/correios/${codRastreio}`)
+    const valid = CORREIOS.test(codRastreio)
+    ReactGA.event('view_item', {codRastreio, valid})
+
+    if (valid) router.push(`/correios/${codRastreio}`)
   }
   const invalidInput = !CORREIOS.test(codRastreio) && codRastreio.length > 1
 
