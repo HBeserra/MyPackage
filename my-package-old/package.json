@@ -1,0 +1,28 @@
+{
+  "name": "my-package",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "start-with-debug": "NODE_OPTIONS='--inspect' next start",
+    "react": "react start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "correios-brasil": "^2.2.2",
+    "mapbox-gl": "^2.3.1",
+    "next": "10.2.2",
+    "normalize.css": "^8.0.1",
+    "primeflex": "^2.0.0",
+    "primeicons": "^4.1.0",
+    "primereact": "^6.4.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-transition-group": "^4.4.2",
+    "sass": "^1.35.1"
+  }
+}
