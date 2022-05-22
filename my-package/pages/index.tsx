@@ -43,7 +43,6 @@ const Home: NextPage = () => {
       <Grid item xs={12} lg={5} xl={4} sx={{ display: 'flex', justifyContent: 'center',alignContent: 'center'}} >
 
         <Box
-         
           sx={{
             '& > :not(style)': {},
             height: 50

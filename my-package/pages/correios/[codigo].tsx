@@ -13,15 +13,17 @@ function Blog({ rastreio }: any) {
     if (!rastreio?.objetos || rastreio.objetos.lenght < 1 || !rastreio.objetos[0]?.tipoPostal) <>Não encontrado</>
     if (isFallback) return <h1><CircularProgress /></h1>
     return (
-        <Box sx={{ p: 5 }}>
+        <Box sx={{ p: 5, display: 'flex', flexDirection: "column", gap: 1 }}>
 
             <Typography variant="subtitle2">Codigo de rastreio</Typography>
-            <Typography variant="h4">{rastreio.objetos[0]?.codObjeto}</Typography>
+            <Typography sx={{fontWeight: 'bold'}} variant="h4">{rastreio.objetos[0]?.codObjeto}</Typography>
             <Typography variant="subtitle2">Metodo de envio</Typography>
             <Typography variant="h6">{rastreio.objetos[0]?.tipoPostal.categoria}</Typography>
-            {rastreio.objetos[0].eventos.map((evento: any, index: number) => <Box key={index} sx={{ p: 2 }}>
+            {rastreio.objetos[0].eventos.map((evento: any, index: number) => <Box key={index} sx={{ py: 2, pl: 4, pr: 0 }}>
                 <Typography variant="subtitle2">{new Date(evento.dtHrCriado).toLocaleString()}</Typography>
-                <Typography variant="h6">{evento.descricao}</Typography>
+                <Typography sx={{color: index == 0 ? "primary.dark" :"secondary.dark", fontWeight: 'bold',textTransform: 'uppercase'}} variant="h6">{evento.descricao}</Typography>
+                <Typography variant="subtitle2">{evento.unidade.endereco.uf} {evento.unidade.endereco.cidade}</Typography>
+                
             </Box>)}
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'end' }}>
                 <Button variant="outlined" disabled endIcon={<SaveIcon />}>
