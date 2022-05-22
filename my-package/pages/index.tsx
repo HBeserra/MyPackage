@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   function redirect () {
     if (CORREIOS.test(codRastreio)) router.push(`/correios/${codRastreio}`)
   }
+  const invalidInput = !CORREIOS.test(codRastreio) && codRastreio.length > 1
 
   return <Container maxWidth="xl">
     <Grid container spacing={2} sx={{ pt: 2 }}>
@@ -42,7 +43,7 @@ const Home: NextPage = () => {
       <Grid item xs={12} lg={5} xl={4} sx={{ display: 'flex', justifyContent: 'center',alignContent: 'center'}} >
 
         <Box
-          component="form"
+         
           sx={{
             '& > :not(style)': {},
             height: 50
@@ -64,7 +65,7 @@ const Home: NextPage = () => {
             }}
           >
             <Typography variant="h1" component="div" gutterBottom>Encontre a sua encomenda</Typography>
-            <TextField fullWidth id="outlined-basic" label="Código de rastreio" variant="outlined"  value={codRastreio} onChange={e =>  setCodRastreio(e.target.value)} />
+            <TextField fullWidth id="outlined-basic" label="Código de rastreio" variant="outlined" error={invalidInput}  helperText={invalidInput? "Codigo de rastreio invalido": ''}  value={codRastreio} onChange={e =>  setCodRastreio(e.target.value.toUpperCase())} />
             <Button variant="contained" fullWidth sx={{ py: 2 }} onClick={redirect} disabled={!CORREIOS.test(codRastreio)} size="large">Rastrear</Button>
             <Box>
               <Button disabled >
