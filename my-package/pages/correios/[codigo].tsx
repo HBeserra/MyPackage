@@ -4,6 +4,9 @@ import { useRouter } from "next/router"
 import ShareIcon from '@mui/icons-material/Share';
 import SaveIcon from '@mui/icons-material/Save';
 import { RWebShare } from "react-web-share";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-X270YGFGX9");
 
 const CORREIOS = /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/
 function Blog({ rastreio }: any) {
@@ -36,7 +39,7 @@ function Blog({ rastreio }: any) {
                         text: "Rastreie sua encomenda agora com MY Package",
                         url: (typeof window !== "undefined")? window?.location?.href : ''
                     }}
-                    onClick={() => console.log("shared successfully!")}
+                    onClick={(e:any) => ReactGA.event('view_item', {codRastreio: rastreio?.objetos[0]?.codObjeto, e})}
                 >
                     <Button variant="contained" disabled={(typeof window === "undefined") || !window?.location?.href} startIcon={<ShareIcon />} >
                         Enviar
