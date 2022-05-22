@@ -4,8 +4,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { Index, Document, Worker } from "flexsearch";
 import cities_data from '@/components/data';
 const index = new Document({
-  index: ['uf', 'municipio'],
-  tags: 'uf',
+  // index: ['uf', 'municipio'],
+  // tags: 'uf',
   preset: 'score',
   cache: true,
 })

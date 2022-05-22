@@ -1,6 +1,6 @@
 import { Button, Container, Grid, Paper, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import type { NextPage } from 'next'
+import type { NextApiResponse, NextPage } from 'next'
 import LoginButton from '@/components/buttons/login'
 
 const styles = {
@@ -13,8 +13,12 @@ const styles = {
   }
 };
 
+interface ErrorProps {
+  statusCode: number;
+  mensage: string
+}
 
-const Error: NextPage = ({ statusCode, mensage }) => {
+const Error = ({ statusCode, mensage }: ErrorProps) => {
   return <Container maxWidth="xl">
     <Grid container spacing={2} sx={{ pt: 2 }}>
       <Grid item xs={8}>
@@ -67,7 +71,11 @@ const Error: NextPage = ({ statusCode, mensage }) => {
 
 }
 
-Error.getInitialProps = ({ res, err }) => {
+interface InitialProps {
+  res: NextApiResponse;
+  err: NextApiResponse;
+}
+Error.getInitialProps = ({ res, err }: InitialProps) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
   const mensage = (statusCode == 404)? 'Não encontrado': 'Um erro ocorreu'
   return { statusCode, mensage }

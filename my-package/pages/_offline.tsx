@@ -14,7 +14,7 @@ const styles = {
 };
 
 
-const Error: NextPage = ({ statusCode, mensage }) => {
+const Error: NextPage = () => {
   return <Container maxWidth="xl">
     <Grid container spacing={2} sx={{ pt: 2 }}>
       <Grid item xs={8}>

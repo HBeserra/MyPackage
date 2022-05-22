@@ -5,11 +5,14 @@ import ShareIcon from '@mui/icons-material/Share';
 import SaveIcon from '@mui/icons-material/Save';
 
 const CORREIOS = /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/
-function Blog({ rastreio }) {
+function Blog({ rastreio }: any) {
     const { isFallback } = useRouter()
     console.log({ rastreio })
-    const enableShare = typeof(Navigator) == "function" && typeof(Navigator.share) == "function"
-    console.log(typeof(Navigator.share))
+
+    let newVariable: any;
+    newVariable = (typeof window !== "undefined") && window.navigator;
+    const enableShare = newVariable && newVariable.share
+
     function share() {
         const shareData = {
             title: 'Sua encomenda esta chegando!',
@@ -17,9 +20,9 @@ function Blog({ rastreio }) {
             url: window.location.href,
         }
         try {
-            Navigator.share(shareData)
+            newVariable.share(shareData)
         } catch (error) {
-            
+
         }
     }
 
@@ -32,7 +35,7 @@ function Blog({ rastreio }) {
             <Typography variant="h4">{rastreio.objetos[0]?.codObjeto}</Typography>
             <Typography variant="subtitle2">Metodo de envio</Typography>
             <Typography variant="h6">{rastreio.objetos[0]?.tipoPostal.categoria}</Typography>
-            {rastreio.objetos[0].eventos.map((evento) => <Box sx={{ p: 2 }}>
+            {rastreio.objetos[0].eventos.map((evento:any, index:number) => <Box key={index} sx={{ p: 2 }}>
                 <Typography variant="subtitle2">{new Date(evento.dtHrCriado).toLocaleString()}</Typography>
                 <Typography variant="h6">{evento.descricao}</Typography>
             </Box>)}
@@ -51,7 +54,7 @@ function Blog({ rastreio }) {
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
 // revalidation is enabled and a new request comes in
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }:any) {
     const { codigo } = params
 
     if (!CORREIOS.test(codigo)) {
