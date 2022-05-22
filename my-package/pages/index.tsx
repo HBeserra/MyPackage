@@ -2,6 +2,8 @@ import { Button, Container, Grid, Paper, TextField, Typography } from '@mui/mate
 import { Box } from '@mui/system'
 import type { NextPage } from 'next'
 import LoginButton from '@/components/buttons/login'
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const styles = {
   paperContainer: {
@@ -12,8 +14,18 @@ const styles = {
   }
 };
 
+const CORREIOS = /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/
 
 const Home: NextPage = () => {
+  const router = useRouter()
+  const [codRastreio, setCodRastreio] = useState('')
+
+  console.log(codRastreio, CORREIOS.test(codRastreio))
+
+  function redirect () {
+    if (CORREIOS.test(codRastreio)) router.push(`/correios/${codRastreio}`)
+  }
+
   return <Container maxWidth="xl">
     <Grid container spacing={2} sx={{ pt: 2 }}>
       <Grid item xs={8}>
@@ -52,8 +64,8 @@ const Home: NextPage = () => {
             }}
           >
             <Typography variant="h1" component="div" gutterBottom>Encontre a sua encomenda</Typography>
-            <TextField fullWidth id="outlined-basic" label="Código de rastreio" variant="outlined" />
-            <Button variant="contained" fullWidth sx={{ py: 2 }} size="large">Rastrear</Button>
+            <TextField fullWidth id="outlined-basic" label="Código de rastreio" variant="outlined"  value={codRastreio} onChange={e =>  setCodRastreio(e.target.value)} />
+            <Button variant="contained" fullWidth sx={{ py: 2 }} onClick={redirect} disabled={!CORREIOS.test(codRastreio)} size="large">Rastrear</Button>
             <Box>
               <Button disabled >
                 <img src='/icons/briefcase.svg' />

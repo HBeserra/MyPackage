@@ -1,33 +1,17 @@
-import { Button, Skeleton, Typography } from "@mui/material"
+import { Button, CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useRouter } from "next/router"
 import ShareIcon from '@mui/icons-material/Share';
 import SaveIcon from '@mui/icons-material/Save';
+import { RWebShare } from "react-web-share";
 
 const CORREIOS = /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/
 function Blog({ rastreio }: any) {
     const { isFallback } = useRouter()
     console.log({ rastreio })
 
-    let newVariable: any;
-    newVariable = (typeof window !== "undefined") && window.navigator;
-    const enableShare = newVariable && newVariable.share
-
-    function share() {
-        const shareData = {
-            title: 'Sua encomenda esta chegando!',
-            text: 'Rastreie sua encomenda agora com MY Package',
-            url: window.location.href,
-        }
-        try {
-            newVariable.share(shareData)
-        } catch (error) {
-
-        }
-    }
-
     if (!rastreio?.objetos || rastreio.objetos.lenght < 1 || !rastreio.objetos[0]?.tipoPostal) <>Não encontrado</>
-    if (isFallback) return <h1><Skeleton variant="text" width={210} /></h1>
+    if (isFallback) return <h1><CircularProgress /></h1>
     return (
         <Box sx={{ p: 5 }}>
 
@@ -35,7 +19,7 @@ function Blog({ rastreio }: any) {
             <Typography variant="h4">{rastreio.objetos[0]?.codObjeto}</Typography>
             <Typography variant="subtitle2">Metodo de envio</Typography>
             <Typography variant="h6">{rastreio.objetos[0]?.tipoPostal.categoria}</Typography>
-            {rastreio.objetos[0].eventos.map((evento:any, index:number) => <Box key={index} sx={{ p: 2 }}>
+            {rastreio.objetos[0].eventos.map((evento: any, index: number) => <Box key={index} sx={{ p: 2 }}>
                 <Typography variant="subtitle2">{new Date(evento.dtHrCriado).toLocaleString()}</Typography>
                 <Typography variant="h6">{evento.descricao}</Typography>
             </Box>)}
@@ -43,9 +27,19 @@ function Blog({ rastreio }: any) {
                 <Button variant="outlined" disabled endIcon={<SaveIcon />}>
                     Salvar
                 </Button>
-                <Button variant="contained"  startIcon={<ShareIcon />} onClick={share}>
-                    Send
-                </Button>
+
+                <RWebShare
+                    data={{
+                        title: "Sua encomenda esta chegando!",
+                        text: "Rastreie sua encomenda agora com MY Package",
+                        url: (typeof window !== "undefined")? window?.location?.href : ''
+                    }}
+                    onClick={() => console.log("shared successfully!")}
+                >
+                    <Button variant="contained" disabled={(typeof window === "undefined") || !window?.location?.href} startIcon={<ShareIcon />} >
+                        Enviar
+                    </Button>
+                </RWebShare>
             </Box>
         </Box>
     )
@@ -54,7 +48,7 @@ function Blog({ rastreio }: any) {
 // This function gets called at build time on server-side.
 // It may be called again, on a serverless function, if
 // revalidation is enabled and a new request comes in
-export async function getStaticProps({ params }:any) {
+export async function getStaticProps({ params }: any) {
     const { codigo } = params
 
     if (!CORREIOS.test(codigo)) {
