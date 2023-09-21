@@ -13,19 +13,19 @@ function Blog({ rastreio }: any) {
     const { isFallback } = useRouter()
     console.log({ rastreio })
 
-    if (!rastreio?.objetos || rastreio.objetos.lenght < 1 || !rastreio.objetos[0]?.tipoPostal) <>Não encontrado</>
+    if (!rastreio) <>Não encontrado</>
     if (isFallback) return <h1><CircularProgress /></h1>
     return (
         <Box sx={{ p: 5, display: 'flex', flexDirection: "column", gap: 1 }}>
 
             <Typography variant="subtitle2">Codigo de rastreio</Typography>
-            <Typography sx={{fontWeight: 'bold'}} variant="h4">{rastreio.objetos[0]?.codObjeto}</Typography>
+            <Typography sx={{fontWeight: 'bold'}} variant="h4">{rastreio.TrackingNumber}</Typography>
             <Typography variant="subtitle2">Metodo de envio</Typography>
-            <Typography variant="h6">{rastreio.objetos[0]?.tipoPostal.categoria}</Typography>
-            {rastreio.objetos[0].eventos.map((evento: any, index: number) => <Box key={index} sx={{ py: 2, pl: 4, pr: 0 }}>
-                <Typography variant="subtitle2">{new Date(evento.dtHrCriado).toLocaleString()}</Typography>
-                <Typography sx={{color: index == 0 ? "primary.dark" :"secondary.dark", fontWeight: 'bold',textTransform: 'uppercase'}} variant="h6">{evento.descricao}</Typography>
-                <Typography variant="subtitle2">{evento.unidade.endereco.uf} {evento.unidade.endereco.cidade}</Typography>
+            <Typography variant="h6">{rastreio.ServiceDescrition}</Typography>
+            {rastreio.TrackingEvents.map((evento: any, index: number) => <Box key={index} sx={{ py: 2, pl: 4, pr: 0 }}>
+                <Typography variant="subtitle2">{evento.EventDateTime}</Typography>
+                <Typography sx={{color: index == 0 ? "primary.dark" :"secondary.dark", fontWeight: 'bold',textTransform: 'uppercase'}} variant="h6">{evento.EventDescription}</Typography>
+                <Typography variant="subtitle2">{evento.EventLocation} {evento.EventLocation}</Typography>
                 
             </Box>)}
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'end' }}>
@@ -39,7 +39,7 @@ function Blog({ rastreio }: any) {
                         text: "Rastreie sua encomenda agora com MY Package",
                         url: (typeof window !== "undefined")? window?.location?.href : ''
                     }}
-                    onClick={(e:any) => ReactGA.event('share', {codRastreio: rastreio?.objetos[0]?.codObjeto, e})}
+                    onClick={(e:any) => ReactGA.event('share', {codRastreio: rastreio.TrackingNumber, e})}
                 >
                     <Button variant="contained" disabled={(typeof window === "undefined") || !window?.location?.href} startIcon={<ShareIcon />} >
                         Enviar
@@ -61,10 +61,25 @@ export async function getStaticProps({ params }: any) {
     }
 
 
-    try {
-        const res = await fetch('https://proxyapp.correios.com.br/v1/sro-rastro/' + codigo)
+    try {     
+        const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'User-Agent': 'Insomnia/2023.5.6',
+              token: 'E495F321R9677R441FR8328RA9792690DFDB'
+            },
+            body: `{"ShippingServiceCode":"03220","TrackingNumber": "${codigo}"}`
+          };
+          
+        const res = await fetch('http://api.frenet.com.br/tracking/trackinginfo', options)
+
+
         const rastreio = await res.json()
-        if (!rastreio?.objetos || rastreio.objetos.lenght < 1 || !rastreio.objetos[0]?.tipoPostal) return { notFound: true }
+
+        console.log(rastreio, rastreio.TrackingEvents)
+
+        //if (!rastreio?.objetos || rastreio.objetos.lenght < 1 || !rastreio.objetos[0]?.tipoPostal) return { notFound: true }
 
         return {
             props: {
@@ -74,7 +89,7 @@ export async function getStaticProps({ params }: any) {
             revalidate: 60 * 60, // In seconds
         }
     } catch (error) {
-        // The Twitter API most likely died
+
         console.error(error)
         return { notFound: true }
     }
